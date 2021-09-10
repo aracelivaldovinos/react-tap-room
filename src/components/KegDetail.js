@@ -17,7 +17,8 @@ function KegDetail(props){
 }
 
 KegDetail.propTypes = {
-  keg: PropTypes.object
+  keg: PropTypes.object,
+  pintsInKeg: PropTypes.number
 }
 
 export default KegDetail

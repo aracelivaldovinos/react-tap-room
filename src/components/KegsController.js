@@ -10,7 +10,7 @@ class KegsController extends React.Component{
       formVisibleonPage: false,
       masterKegsList: [],
       selectedKeg: null,
-      pintsInKeg: 124
+      pintsInKeg: 12
     };
   }
   handleClick= () => {
@@ -39,18 +39,28 @@ class KegsController extends React.Component{
     this.setState({selectedKeg: selectedKeg});
   }
 
-  // Selling 
 
-  handleSellingKeg = (id) =>{
-    const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
+  // handleSellingKeg = (id) =>{
+  //   const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
+  //   const pintsInKeg = this.state.pintsInKeg
+  //   this.setState({
+  //     selectedKeg: selectedKeg,
+  //     pintsInKeg: pintsInKeg - 1 
+  //   });
+  // }
+
+  handleSellingKeg = (kegToSell) =>{
+    const updatedMasterKegsList = this.state.masterKegsList.filter(keg => keg.id !== this.state.selectedKeg.id)(kegToSell);
     const pintsInKeg = this.state.pintsInKeg
     this.setState({
-      selectedKeg: selectedKeg,
+      masterKegsList: updatedMasterKegsList,
       pintsInKeg: pintsInKeg - 1 
     });
   }
 
+ 
 
+  
 
   render(){
     let currentlyVisibleState = null;
