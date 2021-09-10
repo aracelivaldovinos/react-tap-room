@@ -9,7 +9,8 @@ class KegsController extends React.Component{
     this.state ={
       formVisibleonPage: false,
       masterKegsList: [],
-      selectedKeg: null
+      selectedKeg: null,
+      pintsInKeg: 124
     };
   }
   handleClick= () => {
@@ -30,13 +31,24 @@ class KegsController extends React.Component{
     this.setState({
       masterKegsList: newMasterKegsList, 
       formVisibleonPage: false,
-      selectedKeg: null
+      selectedKeg: null,
     });
   }
   handleChangingSelectedKeg = (id) =>{
     const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
     this.setState({selectedKeg: selectedKeg});
   }
+
+  //Selling pint 
+  handleSellingPints = (id) => {
+  const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
+  const pintsInKeg = this.state.pintsInKeg 
+  this.setState({
+    selectedKeg: selectedKeg,
+    pintsInKeg: pintsInKeg - 1
+    });
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -49,7 +61,7 @@ class KegsController extends React.Component{
       currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList}/>
       buttonText = "Return to kegs list";
     }else{
-      currentlyVisibleState = <KegsList kegsList={this.state.masterKegsList} onKegSelection={this.handleChangingSelectedKeg}/>
+      currentlyVisibleState = <KegsList kegsList={this.state.masterKegsList} onKegSelection={this.handleChangingSelectedKeg} onSellingPint={this.handleSellingPints}/>
       buttonText = "Add keg"
     }
 

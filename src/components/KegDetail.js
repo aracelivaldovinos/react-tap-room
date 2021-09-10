@@ -10,6 +10,7 @@ function KegDetail(props){
       <h5>{keg.brand}</h5>
       <h5>{keg.price}</h5>
       <h5>{keg.flavor}</h5>
+      <h5>{keg.pints}</h5>
       <hr/>
     </React.Fragment>
   );
