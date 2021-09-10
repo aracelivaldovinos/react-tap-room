@@ -8,9 +8,10 @@ function Keg(props){
         <h5>{props.name}</h5>
         {/* <h5>{props.brand}</h5> */}
         <h5>{props.price}</h5>
-        <h5>Pints: {this.state.pintsInKeg}</h5>
       </div>
-      <button onClick = {()=>props.whenSellingPint(props.id)}>Sell</button>
+      {props.showPints} 
+      <br/>
+      <button onClick = {()=>props.whenSellClicked(props.id)}>Sell</button>
       <hr/>
     </React.Fragment>
   );
