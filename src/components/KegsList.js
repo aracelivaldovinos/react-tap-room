@@ -1,28 +1,12 @@
 import React from "react";
-import Keg from "./Keg"
+import Keg from "./Keg";
+import PropTypes from "prop-types";
 
-
-const masterKegsList = [
-  {
-    name: "Tipsy Booch",
-    brand: "Kosmic Kombucha",
-    price: 10,
-    flavor: "Lemon Ginger"
-  },
-  {
-    name: "Tickling Tonic",
-    brand:"Wild Kombucha",
-    price: 8,
-    flavor: "Mango Lime"
-
-  }
-]
-function KegsList(){
-  
+function KegsList(props){
   return(
     <React.Fragment>
       <hr/>
-      {masterKegsList.map((keg, index) =>
+      {props.kegsList.map((keg, index) =>
         <Keg name={keg.name} 
         brand={keg.brand}
         price={keg.price}
@@ -32,5 +16,9 @@ function KegsList(){
     </React.Fragment>
   );
 }
+
+KegsList.propTypes ={
+  kegsList: PropTypes.array
+};
 
 export default KegsList;
