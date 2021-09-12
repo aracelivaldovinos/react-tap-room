@@ -20,13 +20,18 @@ _A tap room application built in React where a kombucha store can track their ke
 * _As a user, I want to see how many pints are left in a keg. Hint: A full keg has roughly 124 pints._
 * _As a user, I want to be able to click a button next to a keg whenever I sell a pint of it. This should decrease the number of pints left by 1. Pints should not be able to go below 0._
 
+## Component Diagram
+![KombuchaDiagram](kombucha_diagram.png)
+
 ## Setup/Installation Requirements
 
 _Clone repo:_
 * _Clone the repository to desktop using `git clone` in terminal_
 * _Open clone folder in text editor of your choice_
+
 _Execute tests:_
 * _Run `npm test` in terminal/command line_
+
 _View in browser:_
 * _Run `npm start` start in terminal/command line_
 
