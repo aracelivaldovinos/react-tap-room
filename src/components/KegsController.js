@@ -14,7 +14,7 @@ class KegsController extends React.Component{
           brand: "Kosmic Kombucha",
           price: "5.00",
           flavor: "Cranberry Orange",
-          pints: 124,
+          pints: 11,
           id: 1
         },
         {
@@ -22,7 +22,7 @@ class KegsController extends React.Component{
           brand: "Wild Kombucha",
           price: "7.00",
           flavor: "Mango Lime",
-          pints: 124,
+          pints: 11,
           id: 2
         }
       ],
@@ -50,11 +50,11 @@ class KegsController extends React.Component{
       selectedKeg: null,
     });
   }
+  
   handleChangingSelectedKeg = (id) =>{
     const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
     this.setState({selectedKeg: selectedKeg});
   }
-
 
   handleSellingKeg = (id) =>{
     const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
