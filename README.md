@@ -35,12 +35,13 @@ _Execute tests:_
 _View in browser:_
 * _Run `npm start` start in terminal/command line_
 
-## Known Bugs
+## Known Bugs/Goals
 
-* _Any known issues_
-* _should go here_
+* _Add color-coded keg prices_
+* _Use stylesheet and CSS object to style application_
 
 ## License
+_[MIT](https://opensource.org/licenses/MIT) (c) 2021 Araceli Valdovinos_
 
 ## Contact Information
 _Araceli Valdovinos valdovinosaraceli50@gmail.com_
