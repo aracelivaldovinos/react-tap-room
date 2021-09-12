@@ -8,9 +8,25 @@ class KegsController extends React.Component{
     super(props);
     this.state ={
       formVisibleonPage: false,
-      masterKegsList: [],
+      masterKegsList: [
+        { 
+          name: "Tipsy Booch",
+          brand: "Kosmic Kombucha",
+          price: "5.00",
+          flavor: "Cranberry Orange",
+          pints: 124,
+          id: 1
+        },
+        {
+          name: "Tickling Tonic",
+          brand: "Wild Kombucha",
+          price: "7.00",
+          flavor: "Mango Lime",
+          pints: 124,
+          id: 2
+        }
+      ],
       selectedKeg: null,
-      pintsInKeg: 12
     };
   }
   handleClick= () => {
@@ -40,41 +56,31 @@ class KegsController extends React.Component{
   }
 
 
-  // handleSellingKeg = (id) =>{
-  //   const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
-  //   const pintsInKeg = this.state.pintsInKeg
-  //   this.setState({
-  //     selectedKeg: selectedKeg,
-  //     pintsInKeg: pintsInKeg - 1 
-  //   });
-  // }
-
-  handleSellingKeg = (kegToSell) =>{
-    const updatedMasterKegsList = this.state.masterKegsList.filter(keg => keg.id !== this.state.selectedKeg.id)(kegToSell);
-    const pintsInKeg = this.state.pintsInKeg
+  handleSellingKeg = (id) =>{
+    const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
+    if (selectedKeg.pints >= 1){
+      selectedKeg.pints --
+    }
     this.setState({
-      masterKegsList: updatedMasterKegsList,
-      pintsInKeg: pintsInKeg - 1 
+      masterKegsList: this.state.masterKegsList,
+      formVisibleonPage: false,
+      selectedKeg: null,
     });
   }
-
- 
-
-  
 
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.selectedKeg != null){
-      currentlyVisibleState = <KegDetail keg ={this.state.selectedKeg} pintsInKeg={this.state.pintsInKeg}/>
+      currentlyVisibleState = <KegDetail keg ={this.state.selectedKeg}/>
       buttonText = "Return to kegs list"
     }
     else if (this.state.formVisibleonPage) {
       currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList}/>
       buttonText = "Return to kegs list";
     }else{
-      currentlyVisibleState = <KegsList kegsList={this.state.masterKegsList} pintsInKeg={this.state.pintsInKeg} onKegSelection={this.handleChangingSelectedKeg} onKegSell={this.handleSellingKeg}/>
+      currentlyVisibleState = <KegsList kegsList={this.state.masterKegsList} onKegSelection={this.handleChangingSelectedKeg} onClickingSell={this.handleSellingKeg}/>
       buttonText = "Add keg"
     }
 
