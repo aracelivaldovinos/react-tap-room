@@ -56,6 +56,14 @@ class KegsController extends React.Component{
     this.setState({selectedKeg: selectedKeg});
   }
 
+  handleDeletingKeg= (id) =>{
+    const newMasterKegsList = this.state.masterKegsList.filter(keg =>keg.id !== id);
+    this.setState({
+      masterKegsList: newMasterKegsList,
+      selectedKeg: null
+    })
+  }
+
   handleSellingKeg = (id) =>{
     const selectedKeg = this.state.masterKegsList.filter(keg => keg.id === id)[0];
     if (selectedKeg.pints >= 1){
@@ -73,7 +81,7 @@ class KegsController extends React.Component{
     let buttonText = null;
 
     if (this.state.selectedKeg != null){
-      currentlyVisibleState = <KegDetail keg ={this.state.selectedKeg}/>
+      currentlyVisibleState = <KegDetail keg ={this.state.selectedKeg} onClickingDelete={this.handleDeletingKeg}/>
       buttonText = "Return to kegs list"
     }
     else if (this.state.formVisibleonPage) {
@@ -90,8 +98,7 @@ class KegsController extends React.Component{
       <button onClick={this.handleClick}>{buttonText}</button>
     </React.Fragment>
   ); 
-  }
-  
+  } 
 }
 
 export default KegsController;
